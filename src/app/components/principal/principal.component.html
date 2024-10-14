@@ -1,0 +1,15 @@
+<div class="d-flex flex-column min-vh-100">
+  <app-navigation></app-navigation>
+  <main [ngClass]="{'py-0 px-0 my-0 mx-0': specialPage}" class="flex-grow-1 mx-lg-5">
+    <div class="mt-5 d-flex justify-content-center">
+      <router-outlet>
+        <div class="d-flex justify-content-center">
+          <img class="img-fluid" style="height: 700px; width: auto; margin-right: 10px; margin-left: 160px;" src="../../../assets/fondo-inicio.jpg" alt="Imagen 1">
+          <img class="img-fluid" style="height: 700px; width: auto;" src="../../../assets/fondo-inicio.jpg" alt="Imagen 2">
+        </div>
+      </router-outlet>
+    </div>
+  </main>
+
+  <app-footer style="position: z-index;" ></app-footer>
+</div>
