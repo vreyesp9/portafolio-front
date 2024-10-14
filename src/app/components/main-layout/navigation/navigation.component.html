@@ -1,0 +1,58 @@
+<header>
+<div class="sidebar-fixed position-fixed " #sidenav>
+
+        <a class="logo-wrapper waves-effect">
+            <img src="../../../../assets/logo.png" class="img-fluid" alt="">
+        </a>
+
+        <div class="list-group list-group-flush">
+
+            <a routerLink="/home/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }"  class="list-group-item list-group-item-action waves-effect">
+                 <mdb-icon fas icon="chart-pie" class="mr-3"></mdb-icon>Inicio 
+            </a>
+              <a routerLink="/home/siniestros" routerLinkActive="active"
+                class="list-group-item list-group-item-action waves-effect">
+                <mdb-icon fas icon="user" class="mr-3"></mdb-icon>Siniestros
+            </a>
+            <a routerLink="/home/analisis" routerLinkActive="active"
+                class="list-group-item list-group-item-action waves-effect">
+                <mdb-icon fas icon="fa fa-arrow-circle-right" class="mr-3"></mdb-icon>Analisis
+            </a> 
+            <a routerLink="/home/proyecciones" routerLinkActive="active"
+                class="list-group-item list-group-item-action waves-effect">
+                <mdb-icon fas icon="table" class="mr-3"></mdb-icon>Proyecciones
+
+            </a>
+
+        </div>
+
+    </div>
+
+    <mdb-navbar [containerInside]="false" SideClass="navbar navbar-expand-lg navbar-light white">
+
+        <logo class="ml-3">
+            <a class="navbar-brand">
+                <b style="color:#d54400">¡Bienvenido Fabian !</b>
+            </a>
+        </logo>
+
+   <links>
+
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+
+                </li>
+
+            </ul>
+            <ul class="navbar-nav nav-flex-icons">
+                <li class="nav-item">
+                    <a style="background-color: #981f32; color: white;" class="nav-link border border-light"
+                    >
+                        <!-- <mdb-icon fas icon="fas fa-door-open" class="mr-2"></mdb-icon>Cerrar Sesión -->
+                    </a>
+                </li>
+            </ul>
+        </links>
+    </mdb-navbar>
+
+</header>

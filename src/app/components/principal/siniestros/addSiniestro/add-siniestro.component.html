@@ -1,0 +1,10 @@
+<form [formGroup]="formAdd" class="text-center border border-light p-5">
+    <p class="h4 mb-4">Crear Siniestro</p>
+    <input type="text" formControlName="titulo" class="form-control mb-4" placeholder="Titulo">
+    <input type="text" formControlName="descripcion" class="form-control mb-4" placeholder="Descripción">
+    <input type="text" formControlName="status" class="form-control mb-4" placeholder="Status">
+
+
+    <button class="my-4" (click)="createTicket()"> Crear</button>
+
+</form>

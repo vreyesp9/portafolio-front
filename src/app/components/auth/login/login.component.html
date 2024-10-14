@@ -1,0 +1,45 @@
+<div class="container-fluid d-flex justify-content-center align-items-center min-vh-100 login-bg">
+    <div class="card p-4 shadow-lg w-100" style="max-width: 400px;">
+      <h3 class="text-center mb-4">Iniciar Sesión</h3>
+      <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+          <label for="rut">Rut</label>
+          <input 
+  type="text" 
+  class="form-control" 
+  id="rut" 
+  formControlName="rut" 
+  placeholder="Ingrese su rut" 
+  required  
+  maxlength="12" 
+  (input)="onRutInput($event)" 
+/>
+        </div>
+        <div class="form-group mt-3">
+          <label for="password">Contraseña</label>
+          <input 
+            type="password" 
+            class="form-control" 
+            id="password" 
+            formControlName="password" 
+            placeholder="Ingrese su contraseña" 
+            required 
+          />
+        </div>
+        <div  *ngIf="!isValid && loginForm.get('rut')?.value?.length > 1" class="text-danger mt-2">
+            El RUT ingresado no es válido. Por favor, verifica el formato y vuelve a intentarlo.
+        </div>
+        <br *ngIf="loginForm.get('password')?.value.length > 0 &&
+        loginForm.get('password')?.value.length < 6">
+        <div  *ngIf="loginForm.get('password')?.value.length >0 &&
+        loginForm.get('password')?.value.length < 6" class="text-danger mt-2">
+            El largo de la contraseña es incorrecto
+        </div>
+        <button type="submit" class="btn btn-primary btn-block mt-4" style="background:#fecc37;color: black;" [disabled]="(loginForm.invalid||!isValid)||loginForm.get('password')?.value?.length < 6">Ingresar</button>
+      </form>
+      <div class="text-center mt-3">
+        <small><a href="#" style="color: black;">¿Olvidó su contraseña?</a></small>
+      </div>
+    </div>
+  </div>
+  
