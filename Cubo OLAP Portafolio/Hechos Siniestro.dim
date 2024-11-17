@@ -1,0 +1,181 @@
+﻿<Dimension xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ddl2="http://schemas.microsoft.com/analysisservices/2003/engine/2" xmlns:ddl2_2="http://schemas.microsoft.com/analysisservices/2003/engine/2/2" xmlns:ddl100_100="http://schemas.microsoft.com/analysisservices/2008/engine/100/100" xmlns:ddl200="http://schemas.microsoft.com/analysisservices/2010/engine/200" xmlns:ddl200_200="http://schemas.microsoft.com/analysisservices/2010/engine/200/200" xmlns:ddl300="http://schemas.microsoft.com/analysisservices/2011/engine/300" xmlns:ddl300_300="http://schemas.microsoft.com/analysisservices/2011/engine/300/300" xmlns:ddl400="http://schemas.microsoft.com/analysisservices/2012/engine/400" xmlns:ddl400_400="http://schemas.microsoft.com/analysisservices/2012/engine/400/400" xmlns:ddl500="http://schemas.microsoft.com/analysisservices/2013/engine/500" xmlns:ddl500_500="http://schemas.microsoft.com/analysisservices/2013/engine/500/500" xmlns:dwd="http://schemas.microsoft.com/DataWarehouse/Designer/1.0" dwd:design-time-name="63d61b7d-4d9a-41c8-9d77-bc8a290057ab" xmlns="http://schemas.microsoft.com/analysisservices/2003/engine">
+  <ID>Hechos Siniestro</ID>
+  <Name>Hechos Siniestro</Name>
+  <CreatedTimestamp>0001-01-01T00:00:00Z</CreatedTimestamp>
+  <LastSchemaUpdate>0001-01-01T00:00:00Z</LastSchemaUpdate>
+  <Annotations>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramLayout</Name>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:ShowFriendlyNames</Name>
+      <Value>true</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:ShowRelationshipNames</Name>
+      <Value>false</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:UseDiagramDefaultLayout</Name>
+      <Value>true</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramViewPortLeft</Name>
+      <Value>0</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramViewPortTop</Name>
+      <Value>0</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramBoundingLeft</Name>
+      <Value>0</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramBoundingTop</Name>
+      <Value>0</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramZoom</Name>
+      <Value>100</Value>
+    </Annotation>
+  </Annotations>
+  <LastProcessed>0001-01-01T00:00:00Z</LastProcessed>
+  <State>Unprocessed</State>
+  <Source xsi:type="DataSourceViewBinding" dwd:design-time-name="fb5d3636-4065-4778-b8bc-8b52b7bd0aa3">
+    <DataSourceViewID>Portafolio ETL</DataSourceViewID>
+  </Source>
+  <ErrorConfiguration dwd:design-time-name="9a893eb5-6a70-442f-8011-005f53084b8f">
+    <KeyNotFound>ReportAndStop</KeyNotFound>
+    <KeyDuplicate>ReportAndStop</KeyDuplicate>
+    <NullKeyNotAllowed>ReportAndStop</NullKeyNotAllowed>
+  </ErrorConfiguration>
+  <CurrentStorageMode>Molap</CurrentStorageMode>
+  <Attributes>
+    <Attribute dwd:design-time-name="a6e7eb7a-d283-49e2-95e0-7acee06fe64c">
+      <ID>Id</ID>
+      <Name>Id</Name>
+      <Usage>Key</Usage>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="7c028d5a-00c2-431a-97f5-106cf292bed2">
+          <DataType>Integer</DataType>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="fb844183-e18f-4cbb-a005-3ededc97a3f5">
+            <TableID>dbo_Hechos_Siniestro</TableID>
+            <ColumnID>id</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <AttributeRelationships>
+        <AttributeRelationship dwd:design-time-name="93a9cc62-fbe5-4943-86c9-61ead31e2399">
+          <AttributeID>Bombero Key</AttributeID>
+          <Name>Bombero Key</Name>
+        </AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="d193820a-743d-482b-986c-5dbf30e8c084">
+          <AttributeID>Tipo Siniestro Key</AttributeID>
+          <Name>Tipo Siniestro Key</Name>
+        </AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="725ef8f8-b386-42a3-954d-30bf3b951146">
+          <AttributeID>Compania Key</AttributeID>
+          <Name>Compania Key</Name>
+        </AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="e9dc2f76-d04d-45c6-86c6-eb90b5f77fc1">
+          <AttributeID>Comuna Key</AttributeID>
+          <Name>Comuna Key</Name>
+        </AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="5ef1ebc1-0af3-4fbe-8892-8d039e4235a2">
+          <AttributeID>Fecha Key</AttributeID>
+          <Name>Fecha Key</Name>
+        </AttributeRelationship>
+      </AttributeRelationships>
+      <OrderBy>Key</OrderBy>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute dwd:design-time-name="b8a8636c-0a54-41d2-b05b-89fb5856259f">
+      <ID>Bombero Key</ID>
+      <Name>Bombero Key</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="0a38916f-b58f-4cb8-a5fb-7e71d6350e47">
+          <DataType>Integer</DataType>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="081d4a9e-9d06-4266-9a88-ec69e8ac2b43">
+            <TableID>dbo_Hechos_Siniestro</TableID>
+            <ColumnID>bombero_key</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <OrderBy>Key</OrderBy>
+      <AttributeHierarchyVisible>false</AttributeHierarchyVisible>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute dwd:design-time-name="d0b3a7da-0eb7-4c58-89d2-7551200fb3dc">
+      <ID>Tipo Siniestro Key</ID>
+      <Name>Tipo Siniestro Key</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="bb057c7d-8b18-4322-a122-0e7b32299917">
+          <DataType>Integer</DataType>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="b60ea9df-85cd-4975-b93e-08d8d627557f">
+            <TableID>dbo_Hechos_Siniestro</TableID>
+            <ColumnID>tipo_siniestro_key</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <OrderBy>Key</OrderBy>
+      <AttributeHierarchyVisible>false</AttributeHierarchyVisible>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute dwd:design-time-name="59c227c1-b476-4240-8427-c0e39514199a">
+      <ID>Compania Key</ID>
+      <Name>Compania Key</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="85802cf9-56fc-47bd-8bc8-eaff49ca45c4">
+          <DataType>Integer</DataType>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="7911eb79-07c3-42ee-9dbd-e82f124b7e99">
+            <TableID>dbo_Hechos_Siniestro</TableID>
+            <ColumnID>compania_key</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <OrderBy>Key</OrderBy>
+      <AttributeHierarchyVisible>false</AttributeHierarchyVisible>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute dwd:design-time-name="019ef9fa-5001-4d39-a172-1db042d965cc">
+      <ID>Comuna Key</ID>
+      <Name>Comuna Key</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="53094559-bd78-40f8-98e8-d27eeb9b32c5">
+          <DataType>Integer</DataType>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="b3aa3386-b07d-4e30-8531-efcbf8a6a6aa">
+            <TableID>dbo_Hechos_Siniestro</TableID>
+            <ColumnID>comuna_key</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <OrderBy>Key</OrderBy>
+      <AttributeHierarchyVisible>false</AttributeHierarchyVisible>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute dwd:design-time-name="1e650b38-8833-4771-8592-02cd7158e748">
+      <ID>Fecha Key</ID>
+      <Name>Fecha Key</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="ef5525ae-4391-4dab-9eeb-48fb4c8a9a3b">
+          <DataType>Integer</DataType>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="81c25660-c407-48e5-996b-7d9974d0b0e3">
+            <TableID>dbo_Hechos_Siniestro</TableID>
+            <ColumnID>fecha_key</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <OrderBy>Key</OrderBy>
+      <AttributeHierarchyVisible>false</AttributeHierarchyVisible>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+  </Attributes>
+  <ddl300:ProcessingState>Unprocessed</ddl300:ProcessingState>
+</Dimension>

@@ -1,0 +1,23 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.35325.158
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{D2ABAB84-BF74-430A-B69E-9DC6D40DDA17}") = "Cubo OLAP Portafolio", "Cubo OLAP Portafolio\Cubo OLAP Portafolio.dwproj", "{98784B34-034A-417D-965E-A2EF4014EF28}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Development|Default = Development|Default
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{98784B34-034A-417D-965E-A2EF4014EF28}.Development|Default.ActiveCfg = Development
+		{98784B34-034A-417D-965E-A2EF4014EF28}.Development|Default.Build.0 = Development
+		{98784B34-034A-417D-965E-A2EF4014EF28}.Development|Default.Deploy.0 = Development
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {6D4B87D4-9C00-4773-9232-3EEEC3C9430D}
+	EndGlobalSection
+EndGlobal
