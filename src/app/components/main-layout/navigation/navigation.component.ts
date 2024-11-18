@@ -42,7 +42,7 @@ export class NavigationComponent implements OnInit {
     //    console.log('resp desloge0o ', resp);
     //  });
 
-    sessionStorage.setItem('identity-equifax', '');
+    sessionStorage.setItem('identity-portafolio', '');
     this._router.navigate(['/']);
   }
 }

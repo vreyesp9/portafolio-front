@@ -14,6 +14,7 @@ import { MatTableModule } from '@angular/material/table';
 import { Ng9RutModule } from 'ng9-rut';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { MAT_DIALOG_DEFAULT_OPTIONS } from '@angular/material/dialog';
 
 
 
@@ -37,5 +38,17 @@ ModalModule,
     
   ],
   entryComponents: [AddSiniestroComponent],
+  providers: [
+    {
+      provide: MAT_DIALOG_DEFAULT_OPTIONS,
+      useValue: {
+        hasBackdrop: true,
+        disableClose: false,
+        width: '600px',
+        height: 'auto',
+        position: { top: '0', left: '0' }, // Cambiar según necesidades
+      },
+    },
+  ],
 })
 export class PrincipalModule {}

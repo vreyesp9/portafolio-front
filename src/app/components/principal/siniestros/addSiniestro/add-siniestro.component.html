@@ -1,10 +1,72 @@
-<form [formGroup]="formAdd" class="text-center border border-light p-5">
-    <p class="h4 mb-4">Crear Siniestro</p>
-    <input type="text" formControlName="titulo" class="form-control mb-4" placeholder="Titulo">
-    <input type="text" formControlName="descripcion" class="form-control mb-4" placeholder="Descripción">
-    <input type="text" formControlName="status" class="form-control mb-4" placeholder="Status">
-
-
-    <button class="my-4" (click)="createTicket()"> Crear</button>
-
-</form>
+<div class="container">
+    <form [formGroup]="formAdd" >
+ 
+      <!-- Campo Fecha -->
+      <div class="form-group">
+        <label for="fecha">Fecha</label>
+        <input 
+          type="date" 
+          id="fecha" 
+          class="form-control" 
+          formControlName="fecha" />
+      </div>
+  
+      <!-- Campo Perdidas Materiales -->
+      <div class="form-group">
+        <label for="perdidas_materiales">Pérdidas Materiales</label>
+        <input 
+          type="text" 
+          id="perdidas_materiales" 
+          class="form-control" 
+          formControlName="perdidas_materiales" 
+          placeholder="Ingrese pérdidas materiales" />
+      </div>
+  
+      <!-- Campo Afectados -->
+      <div class="form-group">
+        <label for="afectados">Afectados</label>
+        <input 
+          type="text" 
+          id="afectados" 
+          class="form-control" 
+          formControlName="afectados" 
+          placeholder="Ingrese número de afectados" />
+      </div>
+  
+      <!-- Campo Implementos -->
+      <div class="form-group">
+        <label for="implementos_utilizados">Implementos</label>
+        <input 
+          type="text" 
+          id="implementos_utilizados" 
+          class="form-control" 
+          formControlName="implementos_utilizados" 
+          placeholder="Ingrese implementos" />
+      </div>
+  
+      <!-- Campo Tipo de Siniestro -->
+      <div class="form-group">
+        <label for="tipoSiniestro">Tipo de Siniestro</label>
+        <input 
+          type="text" 
+          id="tipoSiniestro" 
+          class="form-control" 
+          formControlName="tipoSiniestro" 
+          placeholder="Ingrese tipo de siniestro" />
+      </div>
+  
+      <!-- Campo Descripción -->
+      <div class="form-group">
+        <label for="descripcion">Descripción</label>
+        <textarea 
+          id="descripcion" 
+          class="form-control" 
+          formControlName="descripcion" 
+          placeholder="Ingrese descripción"></textarea>
+      </div>
+  
+      <!-- Botón Guardar -->
+      <button type="submit" (click)="saveData()" class="btn btn-primary">Guardar</button>
+    </form>
+  </div>
+  
