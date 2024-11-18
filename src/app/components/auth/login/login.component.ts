@@ -2,16 +2,20 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, MaxLengthValidator, Validators } from '@angular/forms';
 import { RutPipe } from '../../pipe/rut.pipe';
 import { Router } from '@angular/router';
+import { SiniestroService } from '../../services/siniestro.service';
+import { UsuarioService } from '../../services/usuario.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss'] // Asegúrate de tener este archivo o modificar según sea necesario
+  styleUrls: ['./login.component.scss'], // Asegúrate de tener este archivo o modificar según sea necesario
+  providers:[UsuarioService]
 })
 export class LoginComponent implements OnInit {
   loginForm: FormGroup;
     isValid: boolean=false;
-  constructor(private fb: FormBuilder,private _router: Router,
+  constructor(private fb: FormBuilder,private _router: Router, private _usuarioService: UsuarioService
   ) {
     // Inicializa el formulario
     this.loginForm = this.fb.group({
@@ -63,8 +67,23 @@ export class LoginComponent implements OnInit {
     try {
         if (this.loginForm.valid) {
             const formValues = this.loginForm.value;
-            console.log('Formulario enviado:', formValues);
-            this._router.navigate(['/home']);
+            this._usuarioService.login(formValues).subscribe(
+              response => {
+                sessionStorage.setItem('identity-portafolio', response.data.token);
+
+                this._router.navigate(['/home']);
+
+              },
+              error => {
+                Swal.fire({
+                  icon: 'error',
+                  title: 'Error',
+                  text: 'Usuario o contraseña incorrectos',
+                });
+              }
+            );
+          
+
           }
       
     } catch (error) {

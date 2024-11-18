@@ -7,9 +7,11 @@
     </h3>
     <div class="card-body">
         <div id="table" class="table-editable">
-            <span class="table-add float-right mb-3 mr-2"><a class="text-success" (click)="showAddTicketModal()"><i
+            <span class="table-add float-right mb-3 mr-2"><a class="text-success" (click)="showAddSiniestroModal()"><i
                 class="fas fa-plus fa-2x" aria-hidden="true"></i></a></span>
+       <button   (click)="showAddSiniestroModal()">Crear Siniestro
 
+       </button>
             <table class="table table-bordered table-responsive-md table-striped text-center">
                 <thead>
                     <tr>
@@ -29,52 +31,52 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr *ngFor="let item of dataSource">
+                    <tr *ngFor="let item of paginatedData">
                         <td class="pt-3-half" contenteditable="false">{{item?.id}}</td>
                         <td class="pt-3-half">
                             <label (click)="item.show = !item.show" >{{item?.fecha}}</label>
-                            <input type="text" *ngIf="item.show" [(ngModel)]="item.titulo">
+                            <input type="text" *ngIf="item.show" [(ngModel)]="item.fecha">
                             <button *ngIf="item.show" (click)="changeValue(item)">
                                 Guardar
                             </button>
                         </td>
                         <td class="pt-3-half">
-                            <label (click)="item.show = !item.show" >{{item?.perdidasMateriales}}</label>
-                            <input type="text" *ngIf="item.show" [(ngModel)]="item.descripcion">
+                            <label (click)="item.show = !item.show" >{{item?.perdidas_materiales}}</label>
+                            <input type="text" *ngIf="item.show" [(ngModel)]="item.perdidas_materiales">
                             <button *ngIf="item.show" (click)="changeValue(item)">
                                 Guardar
                             </button>
                         </td>
                         <td class="pt-3-half">
                             <label (click)="item.show = !item.show" >{{item?.afectados}}</label>
-                            <input type="text" *ngIf="item.show" [(ngModel)]="item.status">
+                            <input type="text" *ngIf="item.show" [(ngModel)]="item.afectados">
                             <button *ngIf="item.show" (click)="changeValue(item)">
                                 Guardar
                             </button>
                         </td>
                         <td class="pt-3-half">
-                            <label (click)="item.show = !item.show" >{{item?.implementos}}</label>
-                            <input type="text" *ngIf="item.show" [(ngModel)]="item.ejecutivo">
+                            <label (click)="item.show = !item.show" >{{item?.implementos_utilizados}}</label>
+                            <input type="text" *ngIf="item.show" [(ngModel)]="item.implementos_utilizados">
                             <button *ngIf="item.show" (click)="changeValue(item)">
                                 Guardar
                             </button>
                         </td>
                         <td class="pt-3-half">
-                            <label (click)="item.show = !item.show" >{{item.tipoSiniestro}}</label>
-                            <input type="text" *ngIf="item.show" [(ngModel)]="item.ejecutivo">
+                            <label (click)="item.show = !item.show" >{{item.tipo_siniestro_id}}</label>
+                            <input type="text" *ngIf="item.show" [(ngModel)]="item.tipo_siniestro_id">
                             <button *ngIf="item.show" (click)="changeValue(item)">
                                 Guardar
                             </button>
                         </td>
                         <td class="pt-3-half">
                             <label (click)="item.show = !item.show" >{{item.descripcion}}</label>
-                            <input type="text" *ngIf="item.show" [(ngModel)]="item.ejecutivo">
+                            <input type="text" *ngIf="item.show" [(ngModel)]="item.descripcion">
                             <button *ngIf="item.show" (click)="changeValue(item)">
                                 Guardar
                             </button>
                         </td>
                         <td>
-                            <span class="table-remove"><button type="button" (click)="deleteTicket(item.id)"
+                            <span class="table-remove"><button type="button" (click)="deleteSiniestro(item.id)"
                                     class="btn btn-danger btn-rounded btn-sm my-0">
                                     Eliminar
                                 </button>
@@ -84,6 +86,14 @@
 
                 </tbody>
             </table>
+
+            <button (click)="changePage(currentPage - 1)" [disabled]="currentPage <= 1">Anterior</button>
+            <button (click)="changePage(currentPage + 1)" [disabled]="currentPage >= totalPages()">Siguiente</button>
+            
+            <p>Página {{ currentPage }} de {{ totalPages() }}</p>
+            
+
+
         </div>
     </div>
 </div>

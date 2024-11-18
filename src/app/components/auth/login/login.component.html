@@ -35,7 +35,7 @@
         loginForm.get('password')?.value.length < 6" class="text-danger mt-2">
             El largo de la contraseña es incorrecto
         </div>
-        <button type="submit" class="btn btn-primary btn-block mt-4" style="background:#fecc37;color: black;" [disabled]="(loginForm.invalid||!isValid)||loginForm.get('password')?.value?.length < 6">Ingresar</button>
+        <button type="submit"  class="btn btn-primary btn-block mt-4" style="background:#fecc37;color: black;"  [disabled]="(loginForm.invalid||!isValid)||loginForm.get('password')?.value?.length < 6">Ingresar</button>
       </form>
       <div class="text-center mt-3">
         <small><a href="#" style="color: black;">¿Olvidó su contraseña?</a></small>

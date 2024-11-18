@@ -3,6 +3,11 @@
 body {
     background-color: #eee;
   }
+  .mat-dialog-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
   
   .card.card-cascade .view.gradient-card-header {
     padding: 1rem 1rem;
