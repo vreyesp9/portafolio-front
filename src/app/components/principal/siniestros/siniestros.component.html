@@ -1,18 +1,20 @@
 <app-navigation></app-navigation>
 
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+
+
+
 <!-- Editable table -->
-<div class="card">
+<div class="card card-sticky" style="height: 100%;">
     <h3 class="card-header text-center font-weight-bold text-uppercase py-4">
         SINIESTROS
     </h3>
-    <div class="card-body">
-        <div id="table" class="table-editable">
-            <span class="table-add float-right mb-3 mr-2"><a class="text-success" (click)="showAddSiniestroModal()"><i
-                class="fas fa-plus fa-2x" aria-hidden="true"></i></a></span>
-       <button   (click)="showAddSiniestroModal()">Crear Siniestro
-
-       </button>
-            <table class="table table-bordered table-responsive-md table-striped text-center">
+    <div class="card-body d-flex flex-column">
+        <div id="table" class="table-editable table-responsive">
+            <button class="btn btn-primary mb-3" (click)="showAddSiniestroModal()">
+                <i class="fas fa-plus"></i> Crear Siniestro
+            </button>
+            <table class="table table-bordered table-striped text-center fixed-table">
                 <thead>
                     <tr>
                         <th class="text-center">Id</th>
@@ -23,86 +25,62 @@
                         <th class="text-center">Tipo Siniestro</th>
                         <th class="text-center">Descripción</th>
                         <th class="text-center">Eliminar</th>
-
-
-
-
-
                     </tr>
                 </thead>
                 <tbody>
                     <tr *ngFor="let item of paginatedData">
-                        <td class="pt-3-half" contenteditable="false">{{item?.id}}</td>
-                        <td class="pt-3-half">
-                            <label (click)="item.show = !item.show" >{{item?.fecha}}</label>
+                        <td>{{item?.id}}</td>
+                        <td>
+                            <label (click)="item.show = !item.show">{{item?.fecha}}</label>
                             <input type="text" *ngIf="item.show" [(ngModel)]="item.fecha">
-                            <button *ngIf="item.show" (click)="changeValue(item)">
-                                Guardar
-                            </button>
-                        </td>
-                        <td class="pt-3-half">
-                            <label (click)="item.show = !item.show" >{{item?.perdidas_materiales}}</label>
-                            <input type="text" *ngIf="item.show" [(ngModel)]="item.perdidas_materiales">
-                            <button *ngIf="item.show" (click)="changeValue(item)">
-                                Guardar
-                            </button>
-                        </td>
-                        <td class="pt-3-half">
-                            <label (click)="item.show = !item.show" >{{item?.afectados}}</label>
-                            <input type="text" *ngIf="item.show" [(ngModel)]="item.afectados">
-                            <button *ngIf="item.show" (click)="changeValue(item)">
-                                Guardar
-                            </button>
-                        </td>
-                        <td class="pt-3-half">
-                            <label (click)="item.show = !item.show" >{{item?.implementos_utilizados}}</label>
-                            <input type="text" *ngIf="item.show" [(ngModel)]="item.implementos_utilizados">
-                            <button *ngIf="item.show" (click)="changeValue(item)">
-                                Guardar
-                            </button>
-                        </td>
-                        <td class="pt-3-half">
-                            <label (click)="item.show = !item.show" >{{item.tipo_siniestro_id}}</label>
-                            <input type="text" *ngIf="item.show" [(ngModel)]="item.tipo_siniestro_id">
-                            <button *ngIf="item.show" (click)="changeValue(item)">
-                                Guardar
-                            </button>
-                        </td>
-                        <td class="pt-3-half">
-                            <label (click)="item.show = !item.show" >{{item.descripcion}}</label>
-                            <input type="text" *ngIf="item.show" [(ngModel)]="item.descripcion">
-                            <button *ngIf="item.show" (click)="changeValue(item)">
-                                Guardar
-                            </button>
+                            <button *ngIf="item.show" (click)="changeValue(item)">Guardar</button>
                         </td>
                         <td>
-                            <span class="table-remove"><button type="button" (click)="deleteSiniestro(item.id)"
-                                    class="btn btn-danger btn-rounded btn-sm my-0">
-                                    Eliminar
-                                </button>
-                            </span>
+                            <label (click)="item.show = !item.show">{{item?.perdidas_materiales}}</label>
+                            <input type="text" *ngIf="item.show" [(ngModel)]="item.perdidas_materiales">
+                            <button *ngIf="item.show" (click)="changeValue(item)">Guardar</button>
+                        </td>
+                        <td>
+                            <label (click)="item.show = !item.show">{{item?.afectados}}</label>
+                            <input type="text" *ngIf="item.show" [(ngModel)]="item.afectados">
+                            <button *ngIf="item.show" (click)="changeValue(item)">Guardar</button>
+                        </td>
+                        <td>
+                            <label (click)="item.show = !item.show">{{item?.implementos_utilizados}}</label>
+                            <input type="text" *ngIf="item.show" [(ngModel)]="item.implementos_utilizados">
+                            <button *ngIf="item.show" (click)="changeValue(item)">Guardar</button>
+                        </td>
+                        <td>
+                            <label (click)="item.show = !item.show">{{item.tipo_siniestro_id}}</label>
+                            <input type="text" *ngIf="item.show" [(ngModel)]="item.tipo_siniestro_id">
+                            <button *ngIf="item.show" (click)="changeValue(item)">Guardar</button>
+                        </td>
+                        <td>
+                            <label (click)="item.show = !item.show">{{item.descripcion}}</label>
+                            <input type="text" *ngIf="item.show" [(ngModel)]="item.descripcion">
+                            <button *ngIf="item.show" (click)="changeValue(item)">Guardar</button>
+                        </td>
+                        <td>
+                            <button type="button" (click)="deleteSiniestro(item.id)" class="btn btn-danger btn-sm">
+                                <i class="fas fa-trash"></i> Eliminar
+                            </button>
                         </td>
                     </tr>
-
                 </tbody>
             </table>
-
+        </div>
+        <div class="pagination-buttons">
             <button (click)="changePage(currentPage - 1)" [disabled]="currentPage <= 1">Anterior</button>
             <button (click)="changePage(currentPage + 1)" [disabled]="currentPage >= totalPages()">Siguiente</button>
-            
-            <p>Página {{ currentPage }} de {{ totalPages() }}</p>
-            
-
-
         </div>
+        <p class="text-center">Página {{ currentPage }} de {{ totalPages() }}</p>
     </div>
 </div>
-<!-- Editable table -->
+
 
 <!-- Modal -->
 <app-footer></app-footer>
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-    aria-hidden="true">
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -111,14 +89,63 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <div class="modal-body">
-                ...
-            </div>
+            <div class="modal-body">...</div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
                 <button type="button" class="btn btn-primary">Guardar Cambios</button>
             </div>
         </div>
     </div>
-    
 </div>
+
+
+<style>
+    .fixed-table {
+        table-layout: auto; /* Ajusta automáticamente el tamaño de las columnas */
+        width: 100%; /* Ocupa todo el espacio disponible */
+    }
+
+    .fixed-table th,
+    .fixed-table td {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap; /* Evita saltos de línea en texto largo */
+        word-wrap: break-word;
+        vertical-align: top;
+    }
+
+    .card-sticky {
+        position: sticky;
+        top: 0; /* Fijo en la parte superior */
+        z-index: 1010; /* Asegura que esté encima de otros elementos */
+    }
+
+    .table-responsive {
+        overflow-x: auto; /* Habilita el desplazamiento horizontal en pantallas pequeñas */
+        -webkit-overflow-scrolling: touch; /* Mejora el desplazamiento en dispositivos táctiles */
+    }
+
+    @media screen and (max-width: 768px) {
+        .fixed-table th,
+        .fixed-table td {
+            font-size: 14px; /* Reduce el tamaño de fuente en pantallas pequeñas */
+            padding: 8px;
+        }
+
+        .btn {
+            font-size: 12px; /* Botones más pequeños */
+            padding: 6px 10px;
+        }
+    }
+
+    .modal {
+        z-index: 1050 !important;
+    }
+
+    .modal-backdrop {
+        z-index: 1040 !important;
+    }
+
+
+
+</style>

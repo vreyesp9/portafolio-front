@@ -1,19 +1,32 @@
 <div class="container-fluid d-flex justify-content-center align-items-center min-vh-100 login-bg">
-    <div class="card p-4 shadow-lg w-100" style="max-width: 400px;">
+  <!-- Contenedor principal que agrupa la imagen, los textos y la tarjeta -->
+  <div class="d-flex flex-column align-items-center">
+    <div class="d-flex align-items-center justify-content-center mb-3">
+      <!-- Logo -->
+      <img src="../../../../assets/logo-bombero-login.jpg" alt="Logo" class="img-fluid rounded-circle mr-3" style="max-width: 100px;">
+    
+      <!-- Texto de bienvenida -->
+      <div class="ms-3 text-start">
+        <h5 class="mb-0">Bienvenido</h5>
+        <h6 class="text-danger">Bombero</h6>
+      </div>
+    </div>
+
+    <!-- Tarjeta del formulario -->
+    <div class="card p-4 shadow-lg" style="max-width: 400px; width: 400px;">
       <h3 class="text-center mb-4">Iniciar Sesión</h3>
       <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
         <div class="form-group">
           <label for="rut">Rut</label>
           <input 
-  type="text" 
-  class="form-control" 
-  id="rut" 
-  formControlName="rut" 
-  placeholder="Ingrese su rut" 
-  required  
-  maxlength="12" 
-  (input)="onRutInput($event)" 
-/>
+            type="text" 
+            class="form-control" 
+            id="rut" 
+            formControlName="rut" 
+            placeholder="Ingrese su rut" 
+            required  
+            maxlength="12"
+          />
         </div>
         <div class="form-group mt-3">
           <label for="password">Contraseña</label>
@@ -26,20 +39,33 @@
             required 
           />
         </div>
-        <div  *ngIf="!isValid && loginForm.get('rut')?.value?.length > 1" class="text-danger mt-2">
-            El RUT ingresado no es válido. Por favor, verifica el formato y vuelve a intentarlo.
-        </div>
-        <br *ngIf="loginForm.get('password')?.value.length > 0 &&
-        loginForm.get('password')?.value.length < 6">
-        <div  *ngIf="loginForm.get('password')?.value.length >0 &&
-        loginForm.get('password')?.value.length < 6" class="text-danger mt-2">
-            El largo de la contraseña es incorrecto
-        </div>
-        <button type="submit"  class="btn btn-primary btn-block mt-4" style="background:#fecc37;color: black;"  [disabled]="(loginForm.invalid||!isValid)||loginForm.get('password')?.value?.length < 6">Ingresar</button>
+        <button 
+          type="submit" 
+          class="btn btn-primary btn-block mt-4" 
+          style="background:#fecc37;color: black;"  
+          [disabled]="loginForm.invalid"
+        >
+          Ingresar
+        </button>
       </form>
       <div class="text-center mt-3">
         <small><a href="#" style="color: black;">¿Olvidó su contraseña?</a></small>
       </div>
     </div>
   </div>
-  
+</div>
+
+<style>
+.card {
+  border-radius: 15px;
+  background: rgba(255, 255, 255, 0.9); /* Fondo blanco semitransparente */
+}
+
+.text-danger {
+  color: #e53935; /* Color más agradable para el texto "Bombero" */
+}
+
+.d-flex.flex-column {
+  z-index: 20; /* Asegura que el logo esté sobre otros elementos */
+}
+</style>
