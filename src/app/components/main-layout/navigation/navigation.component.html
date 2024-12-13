@@ -1,58 +1,78 @@
-<header>
-<div class="sidebar-fixed position-fixed " #sidenav>
+<div class="sidebar-container" [class.collapsed]="isCollapsed">
+  <!-- Logo Section -->
+  <div class="logo-wrapper">
+    <img src="assets/Logo_grande.png" alt="Logo" class="logo-img">
+  </div>
 
-        <a class="logo-wrapper waves-effect">
-            <img src="../../../../assets/logo.png" class="img-fluid" alt="">
-        </a>
+  <!-- Toggle Sidebar Button -->
+  <button class="toggle-btn" (click)="toggleSidebar()">
+    <i class="fas fa-bars"></i>
+  </button>
 
-        <div class="list-group list-group-flush">
+  <!-- Navigation Links -->
+  <nav class="navigation-menu">
+    <a routerLink="/home" 
+       routerLinkActive="active" 
+       [routerLinkActiveOptions]="{exact: true}"
+       class="nav-item">
+      <i class="fas fa-home"></i>
+      <span class="nav-label">Inicio</span>
+    </a>
 
-            <a routerLink="/home/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }"  class="list-group-item list-group-item-action waves-effect">
-                 <mdb-icon fas icon="chart-pie" class="mr-3"></mdb-icon>Inicio 
-            </a>
-              <a routerLink="/home/siniestros" routerLinkActive="active"
-                class="list-group-item list-group-item-action waves-effect">
-                <mdb-icon fas icon="user" class="mr-3"></mdb-icon>Siniestros
-            </a>
-            <a routerLink="/home/analisis" routerLinkActive="active"
-                class="list-group-item list-group-item-action waves-effect">
-                <mdb-icon fas icon="fa fa-arrow-circle-right" class="mr-3"></mdb-icon>Analisis
-            </a> 
-            <a routerLink="/home/proyecciones" routerLinkActive="active"
-                class="list-group-item list-group-item-action waves-effect">
-                <mdb-icon fas icon="table" class="mr-3"></mdb-icon>Proyecciones
+    <a routerLink="/home/siniestros" 
+       routerLinkActive="active"
+       class="nav-item">
+      <i class="fas fa-exclamation-triangle"></i>
+      <span class="nav-label">Siniestros</span>
+    </a>
 
-            </a>
+    <a routerLink="/home/analisis"
+       routerLinkActive="active"
+       class="nav-item">
+      <i class="fas fa-chart-line"></i>
+      <span class="nav-label">Análisis</span>
+    </a>
 
-        </div>
+    <a routerLink="/home/proyecciones"
+       routerLinkActive="active"
+       class="nav-item">
+      <i class="fas fa-chart-bar"></i>
+      <span class="nav-label">Proyecciones</span>
+    </a>
 
+    <!-- Admin Section -->
+    <div class="admin-section" *ngIf="isAdmin">
+      <div class="section-divider">
+        <span>Administración - Capitan -</span>
+      </div>
+
+      <a routerLink="/home/usuarioMantenedor"
+         routerLinkActive="active"
+         class="nav-item">
+        <i class="fas fa-users"></i>
+        <span class="nav-label">Usuarios</span>
+      </a>
+
+      <a routerLink="/home/bomberoMantenedor"
+         routerLinkActive="active"
+         class="nav-item">
+        <i class="fas fa-fire-extinguisher"></i>
+        <span class="nav-label">Bomberos</span>
+      </a>
     </div>
+  </nav>
+</div>
 
-    <mdb-navbar [containerInside]="false" SideClass="navbar navbar-expand-lg navbar-light white">
-
-        <logo class="ml-3">
-            <a class="navbar-brand">
-                <b style="color:#d54400">¡Bienvenido Fabian !</b>
-            </a>
-        </logo>
-
-   <links>
-
-            <ul class="navbar-nav mr-auto">
-                <li class="nav-item active">
-
-                </li>
-
-            </ul>
-            <ul class="navbar-nav nav-flex-icons">
-                <li class="nav-item">
-                    <a style="background-color: #981f32; color: white;" class="nav-link border border-light" (click)="logout()"
-                    >
-                        <mdb-icon fas icon="fas fa-door-open" class="mr-2"></mdb-icon>Cerrar Sesión 
-                    </a>
-                </li>
-            </ul>
-        </links>
-    </mdb-navbar>
-
+<!-- Top Navigation Bar -->
+<header class="top-navbar">
+  <div class="navbar-content">
+    <div class="welcome-message">
+      <span>¡Bienvenido Bombero!</span>
+    </div>
+    
+    <button class="logout-btn" (click)="logout()">
+      <i class="fas fa-door-open"></i>
+      <span>Cerrar Sesión</span>
+    </button>
+  </div>
 </header>

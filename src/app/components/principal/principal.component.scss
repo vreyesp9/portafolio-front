@@ -1,20 +1,285 @@
+// Enhanced Variables
+$primary-color: #9b0505;
+$secondary-color: #2c3e50;
+$accent-color: #e74c3c;
+$text-primary: #2c3e50;
+$text-secondary: #7f8c8d;
+$background-light: #f8f9fa;
+$white: #ffffff;
+$shadow-color: rgba(0, 0, 0, 0.1);
+$transition-duration: 0.3s;
+$border-radius-lg: 1rem;
+$border-radius-sm: 0.5rem;
 
-html, body {
-    height: 100%;
-    margin: 0;
+// Mixins
+@mixin glass-effect {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+}
+
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+// Container Styles
+.page-container {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  color: $text-primary;
+}
+
+.content-wrapper {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+  
+  @media (max-width: 768px) {
+    padding: 1rem;
+  }
+}
+
+// Profile Section
+.profile-section {
+  margin-bottom: 3rem;
+}
+
+.profile-card {
+  @include glass-effect;
+  padding: 2rem;
+  border-radius: $border-radius-lg;
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto;
+  
+  @media (min-width: 768px) {
+    display: flex;
+    align-items: center;
+    text-align: left;
+    padding: 3rem;
+  }
+}
+
+.profile-image-container {
+  position: relative;
+  margin-bottom: 2rem;
+  
+  @media (min-width: 768px) {
+    margin-bottom: 0;
+    margin-right: 3rem;
   }
   
-  .content-wrapper {
-    display: grid;
-    grid-template-rows: auto 1fr auto; /* Navegación, contenido, footer */
-    min-height: 100vh;
+  .profile-image {
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 4px solid $white;
+    box-shadow: 0 10px 20px $shadow-color;
+    transition: transform $transition-duration ease;
+    
+    &:hover {
+      transform: scale(1.05);
+    }
   }
   
-  main {
-    display: flex; /* Para el centrado del contenido */
+  .status-indicator {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: #2ecc71;
+    border: 3px solid $white;
+    box-shadow: 0 2px 4px $shadow-color;
+  }
+}
+
+.profile-info {
+  flex: 1;
+  
+  .greeting {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    color: $primary-color;
+    
+    .time {
+      color: $accent-color;
+    }
+    
+    .wave-emoji {
+      display: inline-block;
+      animation: wave 2s infinite;
+      transform-origin: 70% 70%;
+    }
   }
   
-  app-footer {
-    // align-self: end; /* Footer siempre pegado abajo */
+  .user-details {
+    .user-name {
+      font-size: 1.5rem;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+      color: $text-primary;
+    }
+    
+    .user-position {
+      font-size: 1.1rem;
+      color: $text-secondary;
+      font-weight: 500;
+    }
+  }
+}
+.carousel {
+  position: relative;
+  
+  .carousel-inner {
+    border-radius: $border-radius-lg;
   }
   
+  .image-container {
+    position: relative;
+    height: 500px;
+    
+    @media (max-width: 768px) {
+      height: 300px;
+    }
+    
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    
+    .overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(to bottom, 
+        rgba(0,0,0,0.2) 0%,
+        rgba(0,0,0,0.6) 100%);
+    }
+    
+    .carousel-content {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: 2rem;
+      color: $white;
+      @include glass-effect;
+      background: rgba(0,0,0,0.5);
+      
+      h3 {
+        font-size: 2rem;
+        font-weight: 700;
+        margin-bottom: 0.5rem;
+      }
+      
+      p {
+        font-size: 1.1rem;
+        margin: 0;
+      }
+    }
+  }
+  
+  .carousel-control {
+    @include flex-center;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 50px;
+    height: 50px;
+    background-color: rgba(0,0,0,0.5);
+    border-radius: 50%;
+    border: 2px solid $white;
+    cursor: pointer;
+    transition: all $transition-duration ease;
+
+    &:hover {
+      background-color: rgba(0,0,0,0.8);
+    }
+
+    // Mueve las flechas fuera de la imagen
+    &.prev { 
+      left: -60px; // Ajusta este valor para mayor separación
+    }
+    &.next { 
+      right: -60px; // Ajusta este valor para mayor separación
+    }
+  }
+  
+  .carousel-indicators {
+    bottom: 20px;
+    
+    button {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background-color: rgba(255,255,255,0.5);
+      border: 2px solid $white;
+      margin: 0 5px;
+      transition: all $transition-duration ease;
+      
+      &.active {
+        background-color: $white;
+        transform: scale(1.2);
+      }
+    }
+  }
+}
+.carousel-fade .carousel-item {
+  transition: opacity 0.5s ease-in-out;
+  opacity: 0;
+}
+
+.carousel-fade .carousel-item.active {
+  opacity: 1;
+}
+
+
+// Animations
+@keyframes wave {
+  0% { transform: rotate(0deg); }
+  10% { transform: rotate(14deg); }
+  20% { transform: rotate(-8deg); }
+  30% { transform: rotate(14deg); }
+  40% { transform: rotate(-4deg); }
+  50% { transform: rotate(10deg); }
+  60% { transform: rotate(0deg); }
+  100% { transform: rotate(0deg); }
+}
+
+// Responsive Adjustments
+@media (max-width: 576px) {
+  .profile-card {
+    padding: 1.5rem;
+  }
+  
+  .profile-image-container .profile-image {
+    width: 140px;
+    height: 140px;
+  }
+  
+  .profile-info .greeting {
+    font-size: 1.5rem;
+  }
+  
+  .carousel .image-container .carousel-content {
+    padding: 1rem;
+    
+    h3 {
+      font-size: 1.5rem;
+    }
+    
+    p {
+      font-size: 1rem;
+    }
+  }
+}

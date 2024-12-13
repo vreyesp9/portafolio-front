@@ -1,0 +1,205 @@
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<app-navigation></app-navigation>
+<div class="container">
+  <h2 class="text-center">Mantenedor de Usuarios</h2>
+
+      <!-- Botón Agregar Usuario -->
+      <div class="d-flex justify-content-end mb-3">
+        <button class="btn btn-success" (click)="openModal()">
+          <i class="fas fa-plus"></i> Agregar Usuario
+        </button>
+      </div>
+
+  
+
+  <!-- Filtros -->
+  <div class="row mb-3">
+    <div class="col-md-6">
+      <input
+        type="text"
+        class="form-control"
+        placeholder="Buscar..."
+        [(ngModel)]="filtroTexto"
+        (input)="aplicarFiltro()"
+      />
+    </div>
+    <div class="col-md-6">
+      <select
+        class="form-control"
+        [(ngModel)]="filtroSeleccionado"
+        (change)="aplicarFiltro()"
+      >
+        <option *ngFor="let filtro of filtrosDisponibles" [value]="filtro">
+          {{ filtro }}
+        </option>
+      </select>
+    </div>
+  </div>
+
+  <!-- Tabla de usuarios -->
+  <table class="table table-striped">
+    <thead class="thead-dark">
+      <tr>
+        <th>ID</th>
+        <th>Nombre</th>
+        <th>Apellido</th>
+        <th>RUT</th>
+        <th>Email</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let usuario of usuariosPaginados">
+        <td>{{ usuario.id }}</td>
+        <td>{{ usuario.nombres }}</td>
+        <td>{{ usuario.apellidos }}</td>
+        <td>{{ usuario.rut }}</td>
+        <td>{{ usuario.email }}</td>
+        <td>
+          <!-- Botón Editar -->
+          <button
+            class="btn btn-warning"
+            (click)="openModal(usuario)"
+          >
+            Editar
+          </button>
+
+          <!-- Botón Eliminar -->
+          <button class="btn btn-danger" (click)="deleteUsuario(usuario.id)">
+            Eliminar
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- Paginador -->
+  <nav *ngIf="totalPaginas > 1">
+    <ul class="pagination justify-content-center">
+      <li
+        class="page-item"
+        [class.disabled]="paginaActual === 1"
+        (click)="cambiarPagina(paginaActual - 1)"
+      >
+        <a class="page-link">Anterior</a>
+      </li>
+      <li
+        class="page-item"
+        *ngFor="let pagina of [].constructor(totalPaginas); let i = index"
+        [class.active]="paginaActual === i + 1"
+        (click)="cambiarPagina(i + 1)"
+      >
+        <a class="page-link">{{ i + 1 }}</a>
+      </li>
+      <li
+        class="page-item"
+        [class.disabled]="paginaActual === totalPaginas"
+        (click)="cambiarPagina(paginaActual + 1)"
+      >
+        <a class="page-link">Siguiente</a>
+      </li>
+    </ul>
+  </nav>
+</div>
+
+<!-- Modal para Editar Usuario -->
+<div
+  class="modal fade"
+  id="usuarioModal"
+  tabindex="-1"
+  aria-labelledby="usuarioModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="usuarioModalLabel">Editar Usuario</h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <!-- Formulario de edición -->
+        <form>
+         
+          <div class="mb-3">
+            <label for="usuarioRut" class="form-label">RUT</label>
+            <input
+              type="text"
+              id="usuarioRut"
+              class="form-control"
+              [(ngModel)]="usuarioSeleccionado.rut"
+              name="rut"
+            />
+          </div>
+          <div class="mb-3">
+            <label for="usuarioEmail" class="form-label">Email</label>
+            <input
+              type="email"
+              id="usuarioEmail"
+              class="form-control"
+              [(ngModel)]="usuarioSeleccionado.email"
+              name="email"
+            />
+          </div>
+          <div class="mb-3">
+            <label for="usuarioPassword" class="form-label">Contraseña</label>
+            <div class="input-group">
+              <input
+                [type]="passwordVisible ? 'text' : 'password'"
+                id="usuarioPassword"
+                class="form-control"
+                [(ngModel)]="usuarioSeleccionado.password"
+                name="password"
+              />
+              <button
+                class="btn btn-outline-secondary"
+                type="button"
+                (click)="togglePasswordVisibility()"
+              >
+                <i [ngClass]="passwordVisible ? 'fas fa-eye-slash' : 'fas fa-eye'"></i>
+              </button>
+            </div>
+          </div>
+          
+          <div class="mb-3">
+            <label for="usuarioBombero" class="form-label">Bombero</label>
+            <select
+              id="usuarioBombero"
+              class="form-control"
+              [(ngModel)]="usuarioSeleccionado.bombero_id"
+              name="bombero"
+            >
+              <option *ngFor="let bombero of bomberos" [value]="bombero.id">
+                {{ bombero.nombres }} {{ bombero.apellidos }}
+              </option>
+            </select>
+          </div>
+          
+          
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button
+          type="button"
+          class="btn btn-secondary"
+          data-bs-dismiss="modal"
+        >
+          Cerrar
+        </button>
+        <button
+          type="button"
+          class="btn btn-primary"
+          (click)="saveChanges()"
+        >
+          Guardar Cambios
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<app-footer></app-footer>

@@ -1,0 +1,39 @@
+// General Layout Styles
+.content-container {
+    display: flex; // Flexbox para centrar contenido
+    align-items: center; // Centra verticalmente
+    justify-content: center; // Centra horizontalmente
+    height: calc(100vh - 120px); // Ajusta el alto para restar el espacio de la navegación y el footer
+    padding: 20px; // Espaciado alrededor del contenido
+    background-color: #f9f9f9; // Fondo claro para resaltar el contenido
+  }
+  
+  // Responsive iframe
+  .responsive-iframe {
+    width: 100%; // Ajusta al ancho del contenedor
+    max-width: 1350px; // Máximo ancho para evitar que sea demasiado grande
+    height: 100%; // Ajusta al alto del contenedor
+    max-height: 800px; // Máximo alto para pantallas grandes
+    border: none; // Sin borde
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); // Sombra para destacar el iframe
+    border-radius: 8px; // Bordes redondeados para un diseño moderno
+  }
+  
+  // Media Queries para Responsividad
+  @media (max-width: 768px) {
+    .content-container {
+      padding: 10px; // Reduce el padding en pantallas pequeñas
+    }
+  
+    .responsive-iframe {
+      max-width: 100%; // El iframe ocupa todo el ancho disponible
+      max-height: 600px; // Ajusta el alto para pantallas más pequeñas
+    }
+  }
+  
+  @media (max-width: 576px) {
+    .responsive-iframe {
+      max-height: 400px; // Reduce el alto para pantallas muy pequeñas
+    }
+  }
+  

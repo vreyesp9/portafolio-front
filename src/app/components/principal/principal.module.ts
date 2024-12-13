@@ -15,11 +15,13 @@ import { Ng9RutModule } from 'ng9-rut';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MAT_DIALOG_DEFAULT_OPTIONS } from '@angular/material/dialog';
+import { MantenedorUsuarioComponent } from './mantenedor-usuario/mantenedor-usuario.component';
+import { MatenedorBomberoComponent } from './matenedor-bombero/matenedor-bombero.component';
 
 
 
 @NgModule({
-  declarations: [PrincipalComponent,SiniestrosComponent,AddSiniestroComponent,AnalisisComponent,ProyeccionesComponent,],
+  declarations: [PrincipalComponent,SiniestrosComponent,AddSiniestroComponent,AnalisisComponent,ProyeccionesComponent, MantenedorUsuarioComponent, MatenedorBomberoComponent,],
   imports: [
     PrincipalRoutingModule,
     TooltipModule.forRoot(),

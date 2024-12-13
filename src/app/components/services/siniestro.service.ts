@@ -1,72 +1,46 @@
-import { Injectable } from "@angular/core";
-import { map } from 'rxjs/operators';
-import { HttpClientModule, HttpHeaders, HttpClient } from '@angular/common/http';
+import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-@Injectable()
+
+@Injectable({
+  providedIn: 'root'
+})
 export class SiniestroService {
-  [x: string]: any;
+  private apiUrl = 'http://localhost:3000/siniestro';
 
-  public url;
-  public identity;
-  public token;
-  constructor(private _http: HttpClient) {
-
-  }
-
+  constructor(private http: HttpClient) {}
 
   getSiniestro(): Observable<any> {
-
-    const headers = new HttpHeaders({
-        'Content-Type': 'application/json',
-        'Access-Control-Allow-Origin': '*' // Permite solicitudes de cualquier origen
-      });
-
-    return this._http
-      .get( 'http://localhost:3000' + '/siniestro/getsiniestro')
-      .pipe(map((res) => res));
+    return this.http.get<any>(`${this.apiUrl}/getSiniestros`);
   }
 
-  addSiniestro(data): Observable<any> {
-    var params = {
-      body: data,
- 
-    };
-
-    let headers = new HttpHeaders({
-      'Content-Type': 'application/json',
-    });
-
-    return this._http
-      .post( 'http://localhost:3000' + '/siniestro/addSiniestro', JSON.stringify(params),{headers})
-      .pipe(map((res) => res));
-  }
-  updateSiniestro(body): Observable<any> {
-    var params = {
-      body: body,
-    };
-
-    let headers = new HttpHeaders({
-      'Content-Type': 'application/json',
-    });
-
-    return this._http
-      .post( 'http://localhost:3000' + '/siniestro/updateSiniestro',JSON.stringify(params),{headers})
-      .pipe(map((res) => res));
-  }
-  deleteSiniestro(body): Observable<any> {
-
-    var params = {
-      id: body,
-    };
-    console.log('valor paramas',params)
-
-    let headers = new HttpHeaders({
-      'Content-Type': 'application/json',
-    });
-    return this._http
-      .post( 'http://localhost:3000' + '/siniestro/deleteSiniestro', JSON.stringify(params),{headers})
-      .pipe(map((res) => res));
+  addSiniestro(siniestro: any): Observable<any> {
+    return this.http.post(`${this.apiUrl}/addSiniestro`, siniestro);
   }
 
+  updateSiniestro(siniestro: any): Observable<any> {
+    return this.http.put(`${this.apiUrl}/updateSiniestro`, siniestro);
+  }
 
+  deleteSiniestro(id: number): Observable<any> {
+    return this.http.delete(`${this.apiUrl}/deleteSiniestro/${id}`);
+  }
+
+  getTiposSiniestro(): Observable<any> {
+    return this.http.get<any>(`${this.apiUrl}/getTiposSiniestro`);
+  }
+  
+  getComunas(): Observable<any> {
+    return this.http.get<any>(`${this.apiUrl}/getComunas`);
+  }
+  
+  getBomberos(): Observable<any> {
+    return this.http.get<any>(`${this.apiUrl}/getBomberos`);
+  }
+  
+  getUsuarios(): Observable<any> {
+    return this.http.get<any>(`${this.apiUrl}/getUsuarios`);
+  }
+  
+  
 }

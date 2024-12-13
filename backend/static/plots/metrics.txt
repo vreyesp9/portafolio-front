@@ -1,0 +1,17 @@
+Precisión del modelo: 0.94
+Matriz de confusión:
+[[98  2  7]
+ [ 6 92  2]
+ [ 0  2 94]]
+
+Informe de clasificación:
+              precision    recall  f1-score   support
+
+           1       0.94      0.92      0.93       107
+           2       0.96      0.92      0.94       100
+           3       0.91      0.98      0.94        96
+
+    accuracy                           0.94       303
+   macro avg       0.94      0.94      0.94       303
+weighted avg       0.94      0.94      0.94       303
+

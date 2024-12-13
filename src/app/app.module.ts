@@ -25,9 +25,11 @@ import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { RouterModule } from '@angular/router';
 import { PrincipalModule } from './components/principal/principal.module';
+import { ResetPasswordComponent } from './components/reset-password/reset-password.component';
+
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, ResetPasswordComponent],
   imports: [
     HttpClientModule,
     NgxSpinnerModule,
