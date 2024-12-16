@@ -2,6 +2,7 @@
 import { NgModule, Component } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { PrincipalComponent } from './components/principal/principal.component';
+import { ResetPasswordComponent } from './components/reset-password/reset-password.component';
 
 export const routes: Routes = [
 
@@ -18,7 +19,9 @@ export const routes: Routes = [
     {
       path: 'home',
       loadChildren: () => import('../app/components/principal/principal.module').then(m => m.PrincipalModule),
-  }
+  },
+  { path: 'reset-password', component: ResetPasswordComponent }
+  
 ];
 
 @NgModule({

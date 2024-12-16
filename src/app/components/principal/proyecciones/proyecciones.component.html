@@ -1,6 +1,24 @@
 <app-navigation></app-navigation>
-<iframe   style="width: 1500px; height: 800px;padding-left: 300px;" 
-        src="https://jupyterlite.github.io/demo/lab/index.html?path=RescateSoft.ipynb" 
-        frameborder="0" allowFullScreen="true" >
-    </iframe>
+
+<div class="container">
+  <h1>Proyecciones</h1>
+  <button (click)="runPythonScript()" class="run-button" [disabled]="loading">
+    {{ loading ? 'Generando Análisis...' : 'Ejecutar Análisis' }}
+  </button>
+
+  <div *ngIf="loading" class="loading">
+    <p>
+      Cargando análisis, ejecutando <strong>RescateSoft.py</strong>, por favor espere
+      <span class="dots"><span>.</span><span>.</span><span>.</span></span>
+    </p>
+  </div>
+  
+
+  <div *ngIf="images.length > 0 && !loading" class="carousel">
+    <button class="prev" (click)="prevImage()">&#10094;</button>
+    <img [src]="images[currentIndex]" alt="Gráfico">
+    <button class="next" (click)="nextImage()">&#10095;</button>
+  </div>
+</div>
+
 <app-footer></app-footer>

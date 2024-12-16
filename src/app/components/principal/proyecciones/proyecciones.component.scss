@@ -1,51 +1,168 @@
-/* login.component.css */
-html, body {
-    margin: 0; /* Elimina los márgenes por defecto */
-    height: 100%; /* Asegúrate de que el body ocupe todo el alto de la ventana */
+// Definición de variables para colores y tamaños
+$primary-color: #9b0505;
+$secondary-color: #333;
+$button-hover-color: darken($primary-color, 10%);
+$background-color: #f9f9f9;
+$text-color: #444;
+$shadow-color: rgba(0, 0, 0, 0.1);
+$border-radius: 8px;
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: $background-color;
+  color: $text-color;
 }
 
-/* Asegúrate de que el contenedor ocupe toda la pantalla */
-.min-vh-100 {
-    min-height: 100vh; /* Asegúrate de que ocupe el 100% de la altura del viewport */
-}
+.container {
+  text-align: center;
+  margin: 50px auto;
+  padding: 20px;
+  max-width: 80%;
+  background: #fff;
+  border-radius: $border-radius;
+  box-shadow: 0 4px 10px $shadow-color;
 
-/* Fondo de pantalla con imagen */
-.login-bg {
-    background-image: url('../../../../assets/backgroundBombero.jpg'); /* Ruta de la imagen de fondo */
-    background-size: cover; /* La imagen cubre todo el fondo */
-    background-position: center; /* La imagen está centrada */
-    background-repeat: no-repeat; /* No repite la imagen */
-    position: relative; /* Para asegurar el posicionamiento correcto */
-    height: 100vh; /* Asegúrate de que el contenedor tenga altura de 100vh */
-}
+  h1 {
+    font-size: 2.2rem;
+    color: $secondary-color;
+    margin-bottom: 20px;
+  }
 
-/* Agregar un pseudo-elemento para asegurar que la imagen cubra toda el área */
-.login-bg::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-image: inherit; /* hereda la imagen de fondo */
-    background-size: cover; /* La imagen cubre todo el fondo */
-    background-position: center; /* La imagen está centrada */
-    z-index: -1; /* Asegúrate de que esté detrás del contenido */
-}
-
-.card {
-    background: rgba(255, 255, 255, 0.9); /* Fondo blanco con opacidad */
-    border-radius: 1rem;
-    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2); /* Sombra para dar profundidad */
-    position: relative; /* Para asegurar que esté en el mismo contexto de apilamiento que el pseudo-elemento */
-}
-
-.btn-primary {
-    background-color: #007bff;
+  .run-button {
+    padding: 12px 25px;
+    font-size: 1.2rem;
+    background-color: $primary-color;
+    color: #fff;
     border: none;
+    border-radius: $border-radius / 2;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+
+    &:hover {
+      background-color: $button-hover-color;
+      transform: scale(1.05);
+    }
+
+    &:disabled {
+      background-color: #ddd;
+      cursor: not-allowed;
+    }
+  }
+
+  .loading {
+    margin: 30px 0;
+    font-size: 1.3rem;
+    color: #d9534f;
+
+    .dots {
+      display: inline-block;
+      margin-left: 5px;
+
+      span {
+        display: inline-block;
+        animation: dots-animation 1.5s infinite;
+        font-weight: bold;
+      }
+
+      span:nth-child(1) {
+        animation-delay: 0s;
+      }
+      span:nth-child(2) {
+        animation-delay: 0.3s;
+      }
+      span:nth-child(3) {
+        animation-delay: 0.6s;
+      }
+    }
+
+    @keyframes dots-animation {
+      0%, 20% {
+        opacity: 0;
+      }
+      50% {
+        opacity: 1;
+      }
+      100% {
+        opacity: 0;
+      }
+    }
+  }
+
+  .carousel {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 30px auto;
+    max-width: 700px;
+    border-radius: $border-radius;
+    box-shadow: 0 6px 12px $shadow-color;
+
+    img {
+      width: 100%;
+      height: auto;
+      border-radius: $border-radius;
+    }
+
+    .prev,
+    .next {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background-color: rgba(0, 0, 0, 0.6);
+      color: white;
+      border: none;
+      padding: 10px 15px;
+      cursor: pointer;
+      border-radius: 50%;
+      font-size: 1.8rem;
+      z-index: 10;
+      transition: all 0.3s ease;
+
+      &:hover {
+        background-color: rgba(0, 0, 0, 0.8);
+        transform: translateY(-50%) scale(1.1);
+      }
+    }
+
+    // Flechas completamente afuera del contenedor
+    .prev {
+      left: -80px; // Flecha fuera a la izquierda
+    }
+
+    .next {
+      right: -80px; // Flecha fuera a la derecha
+    }
+  }
 }
 
+// Media Queries para Responsividad
+@media (max-width: 768px) {
+  .container {
+    max-width: 95%;
+    h1 {
+      font-size: 1.8rem;
+    }
+    .run-button {
+      font-size: 1rem;
+      padding: 10px 20px;
+    }
+  }
 
-.btn-primary:hover {
-    background-color: #0056b3;
+  .carousel {
+    .prev {
+      left: -50px; // Ajustar posición en pantallas pequeñas
+    }
+    .next {
+      right: -50px;
+    }
+
+    .prev,
+    .next {
+      padding: 8px 12px;
+      font-size: 1.5rem;
+    }
+  }
 }

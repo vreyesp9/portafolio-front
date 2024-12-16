@@ -1,16 +1,17 @@
-'use strict'
+'use strict';
 
-const { check } = require('express-validator');
 const siniestroController = require('../controller/siniestro.controller');
-var express = require('express');
-var api = express.Router();
- const {validarJWT}=require('../middlewares/validar-jwt')
-// Login de usuario
-api.post('/addSiniestro' ,siniestroController.addSiniestro);
-api.post('/deleteSiniestro', siniestroController.deleteSiniestro);
-api.post('/updateSiniestro', siniestroController.updateSiniestro);
+const express = require('express');
+const api = express.Router();
 
-api.get('/getSiniestro', siniestroController.getSiniestro);
+api.post('/addSiniestro', siniestroController.createSiniestro); // Cambiado
+api.delete('/deleteSiniestro/:id', siniestroController.deleteSiniestro);
+api.put('/updateSiniestro', siniestroController.updateSiniestro);
+api.get('/getSiniestros', siniestroController.getSiniestros); // Cambiado
+api.get('/getTiposSiniestro', siniestroController.getTiposSiniestro);
+api.get('/getComunas', siniestroController.getComunas);
+api.get('/getBomberos', siniestroController.getBomberos);
+api.get('/getUsuarios', siniestroController.getUsuarios);
 
 
 module.exports = api;

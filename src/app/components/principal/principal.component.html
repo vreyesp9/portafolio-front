@@ -1,15 +1,90 @@
-<div class="d-flex flex-column min-vh-100">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<div class="page-container">
   <app-navigation></app-navigation>
-  <main [ngClass]="{'py-0 px-0 my-0 mx-0': specialPage}" class="flex-grow-1 mx-lg-5">
-    <div class="mt-5 d-flex justify-content-center">
-      <router-outlet>
-        <div class="d-flex justify-content-center">
-          <img class="img-fluid" style="height: 700px; width: auto; margin-right: 10px; margin-left: 160px;" src="../../../assets/fondo-inicio.jpg" alt="Imagen 1">
-          <img class="img-fluid" style="height: 700px; width: auto;" src="../../../assets/fondo-inicio.jpg" alt="Imagen 2">
+  
+  <main class="main-content" [class.full-width]="specialPage">
+    <div class="content-wrapper">
+      <!-- Profile Section -->
+      <section class="profile-section" data-aos="fade-up">
+        <div class="profile-card">
+          <div class="profile-image-container">
+            <img src="../../../assets/RescateSoft Logo.webp" 
+                 alt="Perfil" 
+                 class="profile-image"
+                 loading="lazy">
+            <div class="status-indicator"></div>
+          </div>
+          
+          <div class="profile-info" data-aos="fade-up" data-aos-delay="200">
+            <h1 class="greeting">
+              Buenas <span class="time">{{ greeting }}</span>
+              <span class="wave-emoji">👋</span>
+            </h1>
+            <div class="user-details">
+              <h2 class="user-name">{{ nombre }} {{ apellido }}</h2>
+              <span class="user-position">{{ cargo }}</span>
+            </div>
+          </div>
         </div>
-      </router-outlet>
+      </section>
+
+      <!-- Carousel Section -->
+      <section class="carousel-section" data-aos="fade-up" data-aos-delay="400">
+        <div id="mainCarousel" class="carousel slide" data-bs-ride="carousel">
+          <div class="carousel-indicators">
+            <button type="button" data-bs-target="#mainCarousel" data-bs-slide-to="0" class="active"></button>
+            <button type="button" data-bs-target="#mainCarousel" data-bs-slide-to="1"></button>
+            <button type="button" data-bs-target="#mainCarousel" data-bs-slide-to="2"></button>
+          </div>
+
+          <div class="carousel-inner">
+            <div class="carousel-item active">
+              <div class="image-container">
+                <img src="../../../assets/Puente alto.jpg" alt="Puente Alto" loading="lazy">
+                <div class="overlay"></div>
+                <div class="carousel-content">
+                  <h3>Puente Alto</h3>
+                  <p>Servicio de emergencia las 24 horas</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="carousel-item">
+              <div class="image-container">
+                <img src="../../../assets/San jose de maipo.png" alt="San José de Maipo" loading="lazy">
+                <div class="overlay"></div>
+                <div class="carousel-content">
+                  <h3>San José de Maipo</h3>
+                  <p>Comprometidos con la seguridad</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="carousel-item">
+              <div class="image-container">
+                <img src="../../../assets/Viña del mar.webp" alt="Viña del Mar" loading="lazy">
+                <div class="overlay"></div>
+                <div class="carousel-content">
+                  <h3>Viña del Mar</h3>
+                  <p>Protegiendo nuestra comunidad</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <button class="carousel-control prev" type="button" data-bs-target="#mainCarousel" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon"></span>
+            <span class="visually-hidden">Anterior</span>
+          </button>
+          <button class="carousel-control next" type="button" data-bs-target="#mainCarousel" data-bs-slide="next">
+            <span class="carousel-control-next-icon"></span>
+            <span class="visually-hidden">Siguiente</span>
+          </button>
+        </div>
+      </section>
     </div>
   </main>
 
-  <app-footer style="position: z-index;" ></app-footer>
+  <app-footer></app-footer>
 </div>

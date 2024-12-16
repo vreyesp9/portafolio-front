@@ -1,0 +1,222 @@
+table {
+  margin: auto;
+  border-collapse: collapse;
+  width: 100%;
+  max-width: 1200px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra para darle profundidad */
+  border-radius: 8px; /* Bordes redondeados */
+  overflow: hidden;
+
+  th,
+  td {
+    padding: 15px;
+    text-align: center;
+    font-size: 14px; /* Ajustar el tamaño de la fuente */
+  }
+
+  thead {
+    background-color: #343a40; /* Fondo oscuro */
+    color: #ffffff; /* Texto blanco */
+    font-size: 16px; /* Tamaño de texto más prominente */
+    text-transform: uppercase; /* Letras en mayúscula para destacar encabezados */
+  }
+
+  tbody {
+    tr {
+      &:nth-child(odd) {
+        background-color: #f9f9f9; /* Color de fondo para filas impares */
+      }
+      &:nth-child(even) {
+        background-color: #ffffff; /* Color de fondo para filas pares */
+      }
+
+      &:hover {
+        background-color: #e9ecef; /* Fondo al pasar el mouse */
+        cursor: pointer; /* Cambiar cursor */
+      }
+    }
+
+    td {
+      border-bottom: 1px solid #ddd; /* Líneas divisorias entre filas */
+    }
+
+    /* Estilo para la celda de acciones */
+    td:last-child {
+      display: flex;
+      justify-content: center;
+      gap: 10px; /* Espaciado entre los botones */
+    }
+  }
+}
+h2 {
+  text-align: center;
+  font-weight: bold;
+  color: #343a40;
+  margin-top: 20px; /* Ajusta el valor según el espacio que desees */
+}
+
+
+button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px; /* Espacio entre ícono y texto */
+  padding: 8px 12px;
+  border: none;
+  border-radius: 5px;
+  font-size: 14px;
+  font-weight: bold;
+  transition: all 0.3s ease;
+
+  &.btn-warning {
+    background-color: #ffc107;
+    color: #000;
+    &:hover {
+      background-color: #e0a800;
+    }
+  }
+
+  &.btn-danger {
+    background-color: #dc3545;
+    color: #fff;
+    &:hover {
+      background-color: #c82333;
+    }
+  }
+
+  i {
+    margin-right: 5px;
+    font-size: 16px; /* Ajustar tamaño del ícono */
+  }
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  list-style: none;
+  margin-top: 20px;
+
+  li {
+    margin: 0 5px;
+
+    a {
+      display: inline-block;
+      padding: 8px 12px;
+      text-decoration: none;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      color: #000000;
+      transition: all 0.3s ease;
+
+      &:hover {
+        background-color: #007bff;
+        color: #fff;
+      }
+
+      &.active {
+        background-color: #007bff;
+        color: #fff;
+        border-color: #007bff;
+      }
+    }
+  }
+}
+
+/* Buscar input */
+.search-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+
+  input[type='text'] {
+    width: 50%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 14px;
+    transition: border-color 0.3s ease;
+
+    &:focus {
+      border-color: #007bff;
+      outline: none;
+    }
+  }
+
+  select {
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 14px;
+    transition: border-color 0.3s ease;
+
+    &:focus {
+      border-color: #007bff;
+      outline: none;
+    }
+  }
+  button.btn-success {
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+
+    i {
+      font-size: 16px;
+    }
+
+    &:hover {
+      background-color: #218838;
+      border-color: #1e7e34;
+    }
+  }
+}
+
+/* Modal Styling */
+.modal-content {
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+
+  .modal-header {
+    background-color: #343a40; /* Fondo oscuro */
+    color: #fff; /* Texto blanco */
+    border-bottom: none;
+
+    .modal-title {
+      font-weight: bold;
+    }
+
+    .btn-close {
+      color: #fff;
+    }
+  }
+
+  .modal-footer {
+    display: flex;
+    justify-content: space-between;
+
+    button {
+      font-weight: bold;
+    }
+
+    .btn-primary {
+      background-color: #007bff;
+      border-color: #007bff;
+
+      &:hover {
+        background-color: #0056b3;
+        border-color: #004085;
+      }
+    }
+
+    .btn-secondary {
+      background-color: #6c757d;
+      border-color: #6c757d;
+
+      &:hover {
+        background-color: #5a6268;
+        border-color: #545b62;
+      }
+    }
+  }
+}
