@@ -26,7 +26,7 @@ const sendVerificationEmail = async (req, res) => {
       .query(query);
 
     if (!result.recordset.length) {
-      return res.status(404).json({ success: false, msg: 'Correo no encontrado' });
+      return res.status(401).json({ success: false, msg: 'Correo no encontrado' });
     }
 
     // Generar un código de verificación aleatorio de 6 dígitos
@@ -83,8 +83,9 @@ const verifyResetCode = (req, res) => {
 
   const storedCode = verificationCodes[email];
 
+
   if (!storedCode) {
-    return res.status(404).json({ success: false, msg: 'Código no encontrado o expirado' });
+    return res.status(401).json({ success: false, msg: 'Código no encontrado o expirado' });
   }
 
   if (parseInt(code, 10) !== storedCode) {
@@ -119,7 +120,7 @@ const resetPassword = async (req, res) => {
       .query(query);
 
     if (result.rowsAffected[0] === 0) {
-      return res.status(404).json({ success: false, msg: 'Correo no encontrado' });
+      return res.status(401).json({ success: false, msg: 'Correo no encontrado' });
     }
 
     res.status(200).json({ success: true, msg: 'Contraseña actualizada correctamente' });

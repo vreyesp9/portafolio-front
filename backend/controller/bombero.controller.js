@@ -30,7 +30,7 @@ const getBomberoInfo = async (req, res) => {
     const bombero = result.recordset[0]; // Toma el primer resultado
 
     if (!bombero) {
-      return res.status(404).json({ success: false, msg: 'Bombero no encontrado' });
+      return res.status(401).json({ success: false, msg: 'Bombero no encontrado' });
     }
 
     // Respuesta con la información del bombero

@@ -21,10 +21,10 @@
     "jsonwebtoken": "^9.0.2",
     "jwt-decode": "^3.1.2",
     "mssql": "^11.0.1",
-    "nodemailer": "^6.9.16",
-    "nodemon": "^3.1.7"
+    "nodemailer": "^6.9.16"
   },
   "devDependencies": {
-    "@types/jwt-decode": "^3.1.0"
+    "@types/jwt-decode": "^3.1.0",
+    "nodemon": "^3.1.9"
   }
 }
